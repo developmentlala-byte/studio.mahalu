@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahalu Studio | Abadikan Momen Terbaikmu</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#1A1A1A',
+                            light: '#F8F5F0',
+                            accent: '#D4AF37',
+                            earth: '#A67B5B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animasi scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Efek hover galeri */
+        .gallery-img {
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Background blur untuk Lightbox */
+        #lightbox {
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-dark font-sans antialiased selection:bg-brand-earth selection:text-white">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight text-brand-dark">
+                MAHALU<span class="text-brand-earth">.</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="hover:text-brand-earth transition-colors">Beranda</a>
+                <a href="#studios" class="hover:text-brand-earth transition-colors">Studio Kami</a>
+                <a href="#contact" class="hover:text-brand-earth transition-colors">Kontak</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-block px-6 py-2.5 bg-brand-dark text-white text-sm font-medium rounded-full hover:bg-brand-earth transition-colors">
+                Booking Sekarang
+            </a>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 py-4 px-6 flex flex-col space-y-2 text-center">
+            <a href="#home" class="block py-3 hover:text-brand-earth" onclick="toggleMobileMenu()">Beranda</a>
+            <a href="#studios" class="block py-3 hover:text-brand-earth" onclick="toggleMobileMenu()">Studio Kami</a>
+            <a href="#contact" class="block py-3 hover:text-brand-earth" onclick="toggleMobileMenu()">Kontak</a>
+            <a href="#contact" class="block py-3 bg-brand-dark text-white rounded-full mt-2" onclick="toggleMobileMenu()">Booking Sekarang</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="./images/Sekarang_buatkan_foto_202603292202.png" alt="Interior Mahalu Studio" class="w-full h-full object-cover opacity-90" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 reveal active">
+            <span class="text-sm font-semibold tracking-[0.2em] text-white uppercase mb-4 block drop-shadow-md">Estetika & Momen</span>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
+                Abadikan Cerita di <br/><span class="italic font-light">Mahalu Studio</span>
+            </h1>
+            <p class="text-base md:text-xl text-gray-100 mb-10 font-light max-w-2xl mx-auto drop-shadow-md px-2">
+                Tiga konsep ruang eksklusif yang dirancang untuk menyempurnakan setiap karya fotografi Anda. Dari pre-wedding, katalog produk, hingga foto keluarga.
+            </p>
+            <a href="#studios" class="inline-flex items-center space-x-2 bg-white text-brand-dark px-6 md:px-8 py-3 md:py-4 rounded-full font-medium hover:bg-brand-earth hover:text-white transition-all duration-300 group">
+                <span>Jelajahi Studio</span>
+                <i class="ph ph-arrow-down transform group-hover:translate-y-1 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Studios Section -->
+    <section id="studios" class="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center mb-16 md:mb-20 reveal">
+            <h2 class="font-serif text-3xl md:text-5xl font-bold mb-4">Ruang Kreatif Kami</h2>
+            <div class="w-20 md:w-24 h-1 bg-brand-earth mx-auto rounded-full"></div>
+            <p class="mt-4 md:mt-6 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">Setiap sudut di Mahalu Studio didesain dengan detail estetika yang tinggi untuk memberikan dimensi baru pada karya fotografi Anda.</p>
+        </div>
+
+        <!-- Studio 1: Japandi Tropical -->
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-20 lg:mb-32 reveal">
+            <div class="w-full lg:w-5/12 order-2 lg:order-1">
+                <span class="text-brand-earth font-semibold tracking-wider text-xs md:text-sm uppercase mb-2 block">Studio 01 | Rp 1.250.000 /3 jam</span>
+                <h3 class="font-serif text-2xl md:text-4xl font-bold mb-3 md:mb-4">Japandi Tropical</h3>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+                    Perpaduan sempurna antara minimalisme fungsional ala Skandinavia dan keanggunan estetika Jepang, diperkaya dengan sentuhan tanaman tropis. Menghadirkan nuansa hangat, bersih, dan menenangkan dengan dominasi elemen kayu terang dan cahaya alami.
+                </p>
+                <ul class="space-y-2 md:space-y-3 mb-8 text-sm text-gray-600">
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Cahaya matahari berlimpah (Natural light)</li>
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Properti kayu rotan & linen</li>
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Tanaman monstera & palem indoor</li>
+                </ul>
+            </div>
+            
+            <div class="w-full lg:w-7/12 order-1 lg:order-2">
+                <div class="flex gap-3 md:gap-4 items-start">
+                    <div class="flex flex-col gap-3 md:gap-4 w-1/2">
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/TR1.jpeg" alt="Japandi 1" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/TR2.jpeg" alt="Japandi 3" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 md:gap-4 w-1/2 mt-6 md:mt-12">
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/TR3.jpeg" alt="Japandi 2" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/TR4.jpeg" alt="Japandi 4" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Studio 2: Middleast Modern -->
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-20 lg:mb-32 reveal">
+            <div class="w-full lg:w-7/12">
+                <div class="flex gap-3 md:gap-4 items-start">
+                    <div class="flex flex-col gap-3 md:gap-4 w-1/2">
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/ME1.png" alt="Middleast 1" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/ME2.png" alt="Middleast 3" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 md:gap-4 w-1/2 mt-6 md:mt-12">
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/ME3.png" alt="Middleast 2" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/ME4.png" alt="Middleast 4" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-5/12">
+                <span class="text-brand-earth font-semibold tracking-wider text-xs md:text-sm uppercase mb-2 block">Studio 02 | Rp 750.000 /3 jam</span>
+                <h3 class="font-serif text-2xl md:text-4xl font-bold mb-3 md:mb-4">Middleast Modern</h3>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+                    Eksplorasi kemewahan eksotis dengan lengkungan arsitektural (arch) khas Timur Tengah yang dimodernisasi. Palet warna terakota, tekstur dinding berpasir, dan karpet bermotif geometris menciptakan dimensi dramatis untuk foto fashion maupun beauty.
+                </p>
+                <ul class="space-y-2 mb-8 text-sm text-gray-600">
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Dinding tekstur terakota & krem</li>
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Properti keramik & tembaga</li>
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Spot foto berkonsep lorong lengkung</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Studio 3: Mid Century -->
+        <div class="flex flex-col lg:flex-row items-center gap-12 reveal">
+            <div class="w-full lg:w-5/12 order-2 lg:order-1">
+                <span class="text-brand-earth font-semibold tracking-wider text-xs md:text-sm uppercase mb-2 block">Studio 03 | | Rp 750.000 /3 jam</span>
+                <h3 class="font-serif text-2xl md:text-4xl font-bold mb-3 md:mb-4">Mid Century</h3>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+                    Membawa Anda kembali ke era keemasan desain tahun 50-an hingga 60-an. Memiliki karakter yang kuat melalui furnitur ikonik, aksen warna berani seperti mustard dan teal, serta panel kayu gelap (walnut) yang memberikan kesan klasik namun tetap elegan.
+                </p>
+                <ul class="space-y-2 md:space-y-3 mb-8 text-sm text-gray-600">
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Sofa vintage & kursi lounge ikonik</li>
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Lampu lantai retro & dekorasi piringan hitam</li>
+                    <li class="flex items-center"><i class="ph-fill ph-check-circle text-brand-earth mr-2 text-lg"></i> Panel dinding kayu walnut premium</li>
+                </ul>
+            </div>
+            
+            <div class="w-full lg:w-7/12 order-1 lg:order-2">
+                <div class="flex gap-3 md:gap-4 items-start">
+                    <div class="flex flex-col gap-3 md:gap-4 w-1/2">
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/MC1.png" alt="Mid Century 1" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/MC2.png" alt="Mid Century 3" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 md:gap-4 w-1/2 mt-6 md:mt-12">
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/MC3.png" alt="Mid Century 2" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="overflow-hidden rounded-2xl aspect-[3/4] shadow-md">
+                            <img src="./images/MC4.png" alt="Mid Century 4" class="gallery-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="contact" class="py-16 md:py-20 bg-brand-dark text-white text-center px-6 reveal">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-serif text-2xl md:text-5xl font-bold mb-4 md:mb-6">Siap Mengabadikan Momen Anda?</h2>
+            <p class="text-gray-300 mb-8 md:mb-10 text-base md:text-lg">Reservasi tanggal pilihan Anda sekarang dan dapatkan pengalaman pemotretan tak terlupakan di Mahalu Studio.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button class="w-full sm:w-auto px-8 py-4 bg-brand-earth text-white rounded-full font-semibold hover:bg-white hover:text-brand-dark transition-colors flex items-center justify-center">
+                    <i class="ph ph-whatsapp-logo text-xl mr-2"></i> Hubungi via WhatsApp
+                </button>
+                <button class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white text-white rounded-full font-semibold hover:bg-white/10 transition-colors">
+                    Lihat Pricelist
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#111] text-gray-400 py-12 px-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <a href="#" class="font-serif text-2xl font-bold text-white mb-4 block">MAHALU<span class="text-brand-earth">.</span></a>
+                <p class="text-sm leading-relaxed">Studio foto tematik premium dengan 3 konsep ruangan eksklusif untuk setiap kebutuhan visual kreatif Anda.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Lokasi Kami</h4>
+                <p class="text-sm flex items-start mb-2">
+                    <i class="ph ph-map-pin text-lg mr-2 text-brand-earth mt-0.5"></i>
+                    <span>Jl. Abdul Gani Raya No.100, Kalibaru Cilodong<br>Depok, Indonesia</span>
+                </p>
+                <p class="text-sm flex items-center mt-4">
+                    <i class="ph ph-clock text-lg mr-2 text-brand-earth"></i>
+                    Buka Setiap Hari: 08:00 - 22:00 WIB
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Sosial Media</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-earth hover:text-white transition-colors">
+                        <i class="ph ph-instagram-logo text-xl"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-earth hover:text-white transition-colors">
+                        <i class="ph ph-tiktok-logo text-xl"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-earth hover:text-white transition-colors">
+                        <i class="ph ph-envelope-simple text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-sm text-center">
+            &copy; 2026 Mahalu Studio. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center opacity-0 transition-opacity duration-300 cursor-zoom-out" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white hover:text-brand-earth text-3xl transition-colors" onclick="closeLightbox()">
+            <i class="ph ph-x"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Zoomed Studio Image" class="max-w-[90%] max-h-[90vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle menu mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Animasi ketika elemen masuk ke viewport (saat di scroll)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Panggil sekali saat halaman dimuat
+
+        // Fungsi Lightbox untuk galeri gambar
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(imgSrc) {
+            lightboxImg.src = imgSrc;
+            lightbox.classList.remove('hidden');
+            
+            // Sedikit delay agar transisi animasi bisa terbaca oleh browser
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+            
+            // Kunci scroll body saat lightbox terbuka
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxImg.src = '';
+                // Kembalikan scroll body
+                document.body.style.overflow = 'auto'; 
+            }, 300); // Waktu ini disesuaikan dengan duration-300 dari Tailwind
+        }
+    </script>
+</body>
+</html>
